@@ -1,0 +1,138 @@
+---
+metadata:
+  title: |
+    Maine Debt Collection Hearing Helper
+  short title: |
+    ME Debt Collection Helper
+  description: |
+    The Maine Debt Collection Hearing Helper is a tool to help Maine people navigate debt collection hearings, including disclosure hearings. It is not legal advice, and you should talk with a lawyer about your case if you can – but this tool can help you navigate the process if you are on your own. 
+  #exit url: https://www.masslegalservices.org/content/online-snap-calculator
+  show login: False
+  #generate download screen: True
+---
+include: 
+  - docassemble.AssemblyLine:assembly_line.yml
+  #- custom_ptla_theme_ngb.yml
+---
+features:
+  question back button: True
+  navigation back button: False
+   #theme file downloaded from: bootstrap theme: https://bootswatch.com/cerulean/bootstrap.min.css
+  css: 
+    - ptlatheme.css
+    #- bootstrap.min.css
+  hide navbar: False 
+  debug: False
+---
+modules:
+  - docassemble.base.core
+---
+mandatory: True
+comment: |
+  Controls order and branching logic for questions specific to this form
+id: interview_order_DebtCollectionHelper
+code: |
+  DebtCollectionHelper_intro
+  users[0].name
+  court_type
+  hearing_type
+  income_type_TANF
+---
+comment: |
+  This question is used to introduce your interview. Please customize
+id: SCL_intro
+continue button field: DebtCollectionHelper_intro
+question: |
+  Maine Debt Collection Hearing Helper
+subquestion: |
+  Use this interview to create a customized print-out or .pdf to help you navigate your Maine debt collection hearing or disclosure hearing, and organize important information about your debt collection exempt income and property. 
+  
+  This interview should only be used for unsecured debts (like a credit card), not debts like a mortgage or car loan. 
+---
+id: User_Info
+question: |
+  What is your full name?
+fields:
+  - Full name: users[0].name 
+---
+id: Court type
+question: |
+  What court is your case in?
+fields:
+  - no label: court_type
+    datatype: radio
+    choices:
+      - District Court: District
+      - Small Claims Court: Small Claims
+---
+id: hearing type
+question: |
+  What kind of hearing do you have?
+fields:
+  - no label: hearing_type
+    datatype: radio
+    choices:
+      - Disclosure Hearing: Disclosure Hearing
+      - Debt Collection Hearing: Debt Collection Hearing
+---
+id: exempt income sources
+question: |
+  Which kinds of income do you have? Please check all that apply.
+fields:
+  - TANF: income_type_TANF
+    datatype: yesno
+  - How much do you get in TANF benefits each month?: TANF_amount
+    datatype: currency
+    show if: income_type_TANF
+  - SSI/Social Security Benefits: income_type_SSI
+    datatype: yesno
+  - How much do you get in SSI and Social Security benefits each month?: SSI_amount
+    datatype: currency
+    show if: income_type_SSI
+  - Veterans Benefits: income_type_VA
+    datatype: yesno
+  - How much do you get in Veterans benefits each month?: VA_amount
+    datatype: currency
+    show if: income_type_VA
+  - Worker's Compensation: income_type_WC
+    datatype: yesno
+  - How much do you get in Worker's Compensation benefits each month?: WC_amount
+    datatype: currency
+    show if: income_type_WC
+  - Maine State Retirement Benefits: income_type_MERB
+    datatype: yesno
+  - How much do you get in Maine State Retirement benefits each month?: MERB_amount
+    datatype: currency
+    show if: income_type_MERB
+  - Unemployment: income_type_UI
+    datatype: yesno
+  - How much do you get in Unemployment benefits each month?: UI_amount
+    datatype: currency
+    show if: income_type_UI
+  - Spousal support or child support needed to support your dependents: income_type_Support
+    datatype: yesno
+  - How much do you get in spousal or child support each month?: Support_amount
+    datatype: currency
+    show if: income_type_Support
+  - Other public benefits (like General Assistance): income_type_PA
+    datatype: yesno
+  - How much do you get in other public benefits each month?: PA_amount
+    datatype: currency
+    show if: income_type_PA
+  - Earned Income Tax Credit or Additional Child Tax Credit: income_type_TAX
+    datatype: yesno
+  - How much did you get in either of these tax credits in the last year?: TAX_amount
+    datatype: currency
+    show if: income_type_TAX      
+---
+mandatory: True
+question: |
+  Here is your document.
+attachment:
+  name: Your letter
+  filename: letter
+  docx template file: Debt_Hearing_Helper.docx
+  skip undefined: True
+  valid formats:
+    - pdf
+    - docx
