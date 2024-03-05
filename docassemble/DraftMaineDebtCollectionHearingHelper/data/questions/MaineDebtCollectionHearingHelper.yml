@@ -12,7 +12,8 @@ metadata:
 ---
 include: 
   - docassemble.AssemblyLine:assembly_line.yml
-  #- custom_ptla_theme_ngb.yml
+  - custom_ptla_theme_ngb.yml
+  #- MaineDebtCollectionHelper-calculations.yml
 ---
 features:
   question back button: True
@@ -26,6 +27,13 @@ features:
 ---
 modules:
   - docassemble.base.core
+---
+#mandatory: true
+#code: |
+  #Setting default currency values
+#  biWEI = 0
+#  WEI = 0
+#  MEI = 0
 ---
 mandatory: True
 comment: |
@@ -79,6 +87,11 @@ id: exempt income sources
 question: |
   Which kinds of income do you have? Please check all that apply.
 fields:
+  - Wages or other income from work: income_type_wage
+    datatype: yesno
+  - How much do you make from work each week?: wage_amount
+    datatype: currency
+    show if: income_type_wage
   - TANF: income_type_TANF
     datatype: yesno
   - How much do you get in TANF benefits each month?: TANF_amount
@@ -124,6 +137,17 @@ fields:
   - How much did you get in either of these tax credits in the last year?: TAX_amount
     datatype: currency
     show if: income_type_TAX      
+---
+#code: |
+  #Step 1. Calculating weekly income from work - converting monthly and biweekly income into weekly income for disclosure hearing purposes. 
+#  MEIC = (MEI * 12) / 52
+#  biWEIC = biWEI / 2
+#  TIW = round(WEI + MEIC + biWEIC, 0)
+  #Step 2. Checking weekly income against Maine exemption statute for wages/income from work
+#  if TIW < 566.00:
+#    wage_test_result = 'fully exempt'
+#  else:
+#    part_exempt_wage_test_result = (TIW) * .75
 ---
 mandatory: True
 question: |
