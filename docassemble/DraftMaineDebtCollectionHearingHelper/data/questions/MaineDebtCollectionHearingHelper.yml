@@ -45,6 +45,7 @@ code: |
   court_type
   hearing_type
   income_type_TANF
+  property_type_home
 ---
 comment: |
   This question is used to introduce your interview. Please customize
@@ -137,6 +138,32 @@ fields:
   - How much did you get in either of these tax credits in the last year?: TAX_amount
     datatype: currency
     show if: income_type_TAX      
+---
+id: exempt property home
+question: |
+  What kind of property do you have?
+fields:
+  - I own a home: property_type_home
+    datatype: yesno
+  - How much equity do you have in your home?: home_equity_amount
+    datatype: currency
+    show if: property_type_home
+  - Do any minor dependents live with you?: home_minor_dep
+    datatype: yesno
+    show if: property_type_home
+  - Do you have any dependents who are age 60 or older, or are disabled?: home_disabled_dep
+    datatype: yesno
+    show if: property_type_home
+  - Are you age 60 or older, or disabled?: home_owner_age
+    datatype: yesno
+    show if: property_type_home
+---
+mandatory: True 
+code: |
+  if home_minor_dep or home_disabled_dep or home_owner_age == True:
+    property_type_home_increase = True
+  else:
+    property_type_home_standard = True
 ---
 #code: |
   #Step 1. Calculating weekly income from work - converting monthly and biweekly income into weekly income for disclosure hearing purposes. 
