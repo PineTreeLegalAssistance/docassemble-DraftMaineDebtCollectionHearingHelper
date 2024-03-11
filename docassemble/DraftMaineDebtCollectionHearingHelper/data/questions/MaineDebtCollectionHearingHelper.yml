@@ -46,6 +46,14 @@ code: |
   hearing_type
   income_type_TANF
   property_type_home
+  property_type_home_additional
+  property_type_vehicle
+  property_type_cash
+  property_type_tools
+  property_type_clothes
+  property_type_household
+  property_type_farm
+  boat_owner
 ---
 comment: |
   This question is used to introduce your interview. Please customize
@@ -148,13 +156,13 @@ fields:
   - How much equity do you have in your home?: home_equity_amount
     datatype: currency
     show if: property_type_home
-  - Do any minor dependents live with you?: home_minor_dep
+  - Minor dependents live with me: home_minor_dep
     datatype: yesno
     show if: property_type_home
-  - Do you have any dependents who are age 60 or older, or are disabled?: home_disabled_dep
+  - I have dependents who are age 60 or older, or are disabled: home_disabled_dep
     datatype: yesno
     show if: property_type_home
-  - Are you age 60 or older, or disabled?: home_owner_age
+  - I am age 60 or older, or disabled: home_owner_age
     datatype: yesno
     show if: property_type_home
 ---
@@ -164,6 +172,133 @@ code: |
     property_type_home_increase = True
   else:
     property_type_home_standard = True
+---
+id: additional home and property
+question: |
+  Do you own any other property or homes (like land, a camp, woodlot, or vacation home)?
+fields: 
+  - I own other property: property_type_home_additional
+    datatype: yesno
+  - How many other properties do you own?: additional_home_number
+    datatype: number
+    show if: property_type_home_additional
+  - What is the amount of equity you have in for all of these properties?: additional_home_equity_amount
+    datatype: currecny
+    show if: property_type_home_additional
+---
+id: vehicle
+question: | 
+  Do you own a vehicle?
+fields: 
+  - I own a vehicle: property_type_vehicle
+    datatype: yesno
+  - How much equity do you have in this vehicle?: vehicle_equity_amount
+    datatype: currency
+    show if: property_type_vehicle
+  - Do you own any other vehicles?: property_type_vehicle_additional
+    datatype: yesno
+    show if: property_type_vehicle
+  - How many other vehicles do you own?: additional_vehicle_number
+    datatype: number
+    show if: property_type_vehicle_additional
+  - How much equity do you have in these other vehicles?: additional_vehicle_equity_amount
+    datatype: currency
+    show if: property_type_vehicle_additional
+---
+id: cash
+question: |
+  Do you have any cash or money in bank accounts?
+fields: 
+  - Do you have any cash or money in bank accounts?: property_type_cash
+    datatype: yesno
+  - How much money do you have in total in cash and bank accounts?: cash_amount
+    datatype: currency
+    show if: property_type_cash
+---
+id: tools of the trade
+question: |
+  Do you work in a trade that requires tools and equipment? 
+fields: 
+  - Do you work in a trade and have tools and equipment you need to do your job?: property_type_tools
+    datatype: yesno
+  - How much equity do you have in the tools of your trade? (For farmers and fishery workers, do not include your primary equipment like a tractor or boat here - we will ask about those things later. But do include other tools needed for your work such as fishing gear or tools used to repair farm equipment): tools_equity_amount
+    datatype: currency
+    show if: property_type_tools
+---
+id: clothing
+question: |
+  Do you have any valuable clothing?
+fields: 
+  - Do you own any items of clothing worth over $500?: property_type_clothes
+    datatype: yesno
+  - How many items of clothing do you have that are worth over $500?: clothes_number
+    datatype: number
+    show if: property_type_clothes
+---
+id: household
+question: |
+  Do you have any valuable household goods, appliances, or furniture?
+fields: 
+  - Do you have any household goods, applinaces, or furniture worth over $500?: property_type_household
+    datatype: yesno
+  - How many household goods, appliances, or items of furniture do you have with values over $500?: household_number
+    datatype: number
+    show if: property_type_household
+---
+id: farm
+question: |
+  Are you a farmer?
+fields:
+  - Are you a farmer with a commercial farming operation?: property_type_farm
+    datatype: yesno
+    note: If you are a commercial farmer, one of every type of farm tool or implement you reasonably need for your operation is exempt from collections. But additional equipment beyond one of every type is not exempt.
+  - Do you have additional farm equipment beyond one of each type reasonably needed for your operation?: property_type_farm_additional
+    datatype: yesno
+    show if: property_type_farm
+  - What is the total value of all your additional farm equipment?: additional_farm_value
+    datatype: currency
+    show if: property_type_farm_additional
+---
+id: boat
+question: |
+  Do you own any boats?
+fields: 
+  - Do you own a boat?: boat_owner
+    datatype: yesno
+  - What kind of boat do you have?: boat_choice
+    datatype: checkboxes
+    none of the above: False
+    choices: 
+      - A commercial fishing boat, 46 feet in length or under: property_type_boat_standard
+      - A commercial fishing boat, over 46 feet in lenght: property_type_boat_large
+      - A boat for personal or recreational use: property_type_boat_other
+    show if: boat_owner
+  - Describe your boat (size, make, use, etc.): boat_detail
+    input type: area
+    show if: boat_choice == property_type_boat_standard
+  - How much equity do you have in this boat?: boat_value
+    datatype: currency
+    show if: boat_choice == property_type_boat_standard
+  - Describe your boat (size, make, use, etc.): large_boat_detail
+    input type: area
+    show if: boat_choice == property_type_boat_large
+  - How much equity do you have in this boat?: large_boat_value
+    datatype: currency
+    show if: boat_choice == property_type_boat_large    
+  - Describe your boat (size, make, use, etc.): other_boat_detail
+    input type: area
+    show if: boat_choice == property_type_boat_other
+  - How much equity do you have in this boat?: other_boat_value
+    datatype: currency
+    show if: boat_choice == property_type_boat_other
+---
+code: |
+  if boat_choice == property_type_boat_standard:
+    property_type_boat_standard = True
+  elif boat_choice == property_type_boat_large:
+    property_type_boat_large = True
+  elif boat_choice == property_type_boat_other:
+    property_type_boat_other = True
 ---
 #code: |
   #Step 1. Calculating weekly income from work - converting monthly and biweekly income into weekly income for disclosure hearing purposes. 
