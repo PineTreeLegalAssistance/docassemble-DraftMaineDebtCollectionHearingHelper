@@ -53,7 +53,7 @@ code: |
   property_type_clothes
   property_type_household
   property_type_farm
-  boat_owner
+  property_type_boat_standard
 ---
 comment: |
   This question is used to introduce your interview. Please customize
@@ -166,7 +166,7 @@ fields:
     datatype: yesno
     show if: property_type_home
 ---
-mandatory: True 
+#mandatory: True 
 code: |
   if home_minor_dep or home_disabled_dep or home_owner_age == True:
     property_type_home_increase = True
@@ -263,42 +263,38 @@ id: boat
 question: |
   Do you own any boats?
 fields: 
-  - Do you own a boat?: boat_owner
+  - I own a commercial fishing boat, 46 feet in length or under: property_type_boat_standard 
     datatype: yesno
-  - What kind of boat do you have?: boat_choice
-    datatype: checkboxes
-    none of the above: False
-    choices: 
-      - A commercial fishing boat, 46 feet in length or under: property_type_boat_standard
-      - A commercial fishing boat, over 46 feet in lenght: property_type_boat_large
-      - A boat for personal or recreational use: property_type_boat_other
-    show if: boat_owner
   - Describe your boat (size, make, use, etc.): boat_detail
     input type: area
-    show if: boat_choice == property_type_boat_standard
+    show if: property_type_boat_standard
   - How much equity do you have in this boat?: boat_value
     datatype: currency
-    show if: boat_choice == property_type_boat_standard
+    show if: property_type_boat_standard
+  - I own a commercial fishing boat, over 46 feet in lenght: property_type_boat_large
+    datatype: yesno
   - Describe your boat (size, make, use, etc.): large_boat_detail
     input type: area
-    show if: boat_choice == property_type_boat_large
+    show if: property_type_boat_large
   - How much equity do you have in this boat?: large_boat_value
     datatype: currency
-    show if: boat_choice == property_type_boat_large    
+    show if: property_type_boat_large
+  - I own a boat for personal or recreational use: property_type_boat_other
+    datatype: yesno
   - Describe your boat (size, make, use, etc.): other_boat_detail
     input type: area
-    show if: boat_choice == property_type_boat_other
+    show if: property_type_boat_other
   - How much equity do you have in this boat?: other_boat_value
     datatype: currency
-    show if: boat_choice == property_type_boat_other
+    show if: property_type_boat_other
 ---
-code: |
-  if boat_choice == property_type_boat_standard:
-    property_type_boat_standard = True
-  elif boat_choice == property_type_boat_large:
-    property_type_boat_large = True
-  elif boat_choice == property_type_boat_other:
-    property_type_boat_other = True
+#code: |
+#  if boat_choice == property_type_boat_standard:
+#    property_type_boat_standard = True
+#  if boat_choice == property_type_boat_large:
+#    property_type_boat_large = True
+#  if boat_choice == property_type_boat_other:
+#    property_type_boat_other = True
 ---
 #code: |
   #Step 1. Calculating weekly income from work - converting monthly and biweekly income into weekly income for disclosure hearing purposes. 
