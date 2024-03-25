@@ -166,12 +166,13 @@ fields:
     datatype: yesno
     show if: property_type_home
 ---
-#mandatory: True 
+mandatory: True 
 code: |
-  if home_minor_dep or home_disabled_dep or home_owner_age == True:
-    property_type_home_increase = True
-  else:
-    property_type_home_standard = True
+  if property_type_home == True:
+    if home_minor_dep or home_disabled_dep or home_owner_age == True:
+      property_type_home_increase = True
+    else:
+      property_type_home_standard = True
 ---
 id: additional home and property
 question: |
