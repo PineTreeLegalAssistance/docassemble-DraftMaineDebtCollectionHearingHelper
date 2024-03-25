@@ -51,12 +51,15 @@ code: |
   property_type_cash
   property_type_clothes
   property_type_jewelry
-  property_type_household
   property_type_fuel
+  property_type_household
   property_type_food
   property_type_farm
   property_type_boat_standard
+  property_type_logging
   property_type_tools
+  property_type_life
+  property_type_health
 ---
 comment: |
   This question is used to introduce your interview. Please customize
@@ -186,7 +189,7 @@ fields:
   - How many other properties do you own?: additional_home_number
     datatype: number
     show if: property_type_home_additional
-  - What is the amount of equity you have in for all of these properties?: additional_home_equity_amount
+  - What is the amount of equity you have in total for all these properties?: additional_home_equity_amount
     datatype: currecny
     show if: property_type_home_additional
 ---
@@ -228,6 +231,21 @@ fields:
   - How much equity do you have in the tools of your trade? (If you work in commercial fishing do not include your fishing boat here - but do include other tools needed for your work such as fishing gear or tools used to repair equipment): tools_equity_amount
     datatype: currency
     show if: property_type_tools
+---
+id: logging
+question: |
+  Are you a logger?
+fields:
+  - Do you work in commercial logging?: property_type_logging
+    datatype: yesnoradio
+    note: |
+      If you are a commercial logger, one of every type of professional logging implement reasonably necessary to harvest and haul wood commercially, including any personal property incidental to its maintenance and operation is exempt from collections. But additional equipment beyond one of every type is not exempt.
+  - Do you have additional logging equipment beyond one of each type reasonably needed for your operation?: property_type_logging_additional
+    datatype: yesnoradio
+    show if: property_type_logging
+  - What is the total value of all your additional logging equipment?: additional_logging_value
+    datatype: currency
+    show if: property_type_logging_additional     
 ---
 id: clothing
 question: |
@@ -275,7 +293,8 @@ question: |
 fields: 
   - Do you have a stove for cooking, stoves or furnaces for heating, and the fuel needed to run them?: property_type_fuel
     datatype: yesnoradio
-    note: Under Maine law one stove for cooking, all stoves and furnaces for heating, and a certain amount of the fuel needed to run them is exempt from collections. You can have up to ten (10) cord of wood, five (5) tons of coal, and one thousand (1000) gallons of petroleum products (like oil or propane) for cooking and heating. 
+    note: |
+      Under Maine law one stove for cooking, all stoves and furnaces for heating, and a certain amount of the fuel needed to run them is exempt from collections. You can have up to ten (10) cord of wood, five (5) tons of coal, and one thousand (1000) gallons of petroleum products (like oil or propane) for cooking and heating. 
   - Do you have more than one cook stove, or more than the exempt amounts of fuel listed above?: property_type_fuel_extra
     datatype: yesnoradio
     show if: property_type_fuel
@@ -304,7 +323,8 @@ question: |
 fields:
   - Are you a farmer with a commercial farming operation?: property_type_farm
     datatype: yesnoradio
-    note: If you are a commercial farmer, one of every type of farm tool or implement you reasonably need for your operation is exempt from collections. But additional equipment beyond one of every type is not exempt.
+    note: |
+      If you are a commercial farmer, one of every type of farm tool or implement you reasonably need for your operation is exempt from collections. But additional equipment beyond one of every type is not exempt.
   - Do you have additional farm equipment beyond one of each type reasonably needed for your operation?: property_type_farm_additional
     datatype: yesnoradio
     show if: property_type_farm
@@ -340,6 +360,29 @@ fields:
   - How much equity do you have in this boat?: other_boat_value
     datatype: currency
     show if: property_type_boat_other
+---
+id: life insurance
+question: |
+  Life Insurance 
+fields:
+  - Do you have any life insurance policies?: property_type_life
+    datatype: yesnoradio
+  - Is your life insurance a credit life insurance (a type of life insurance that pays off the balance of a debt if you die before paying it off)?: property_type_life_credit
+    datatype: yesnoradio
+    show if: property_type_life
+  - What is the value of your credit life insurance?: life_credit_value
+    datatype: currency
+    show if: property_type_life_credit
+  - What is the value of any accrued dividend or interest under, or loan value of your life insurance policies?: life_value
+    datatype: currency
+    show if: property_type_life
+---
+id: health aid
+question: |
+  Prescribed Health Aids or Medical Equipment
+fields:
+  - Do you have any health aids or medical equipment prescribed by a professional?: property_type_health
+    datatype: yesnoradio
 ---
 #code: |
 #  if boat_choice == property_type_boat_standard:
