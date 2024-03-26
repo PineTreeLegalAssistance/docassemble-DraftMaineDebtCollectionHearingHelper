@@ -366,8 +366,11 @@ question: |
 subquestion: |
   Check all that apply. If you don't own a boat, click 'Next' to continue.
 fields:
+  - Do you own any boats?: boat_owner
+    datatype: yesnoradio
   - I own a commercial fishing boat, 46 feet in length or under: property_type_boat_standard 
     datatype: yesno
+    show if: boat_owner
   - Describe your boat (size, make, use, etc.): boat_detail
     input type: area
     show if: property_type_boat_standard
@@ -376,6 +379,7 @@ fields:
     show if: property_type_boat_standard
   - I own a commercial fishing boat, over 46 feet in length: property_type_boat_large
     datatype: yesno
+    show if: boat_owner
   - Describe your boat (size, make, use, etc.): large_boat_detail
     input type: area
     show if: property_type_boat_large
@@ -384,6 +388,7 @@ fields:
     show if: property_type_boat_large
   - I own a boat for personal or recreational use: property_type_boat_other
     datatype: yesno
+    show if: boat_owner
   - Describe your boat (size, make, use, etc.): other_boat_detail
     input type: area
     show if: property_type_boat_other
