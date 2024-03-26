@@ -41,25 +41,30 @@ comment: |
 id: interview_order_DebtCollectionHelper
 code: |
   DebtCollectionHelper_intro
-  users[0].name
+  users[0].name.first
   court_type
   hearing_type
+  set_progress(20)
   income_type_TANF
   property_type_home
   property_type_home_additional
   property_type_vehicle
   property_type_cash
+  set_progress(40)
   property_type_clothes
   property_type_jewelry
   property_type_fuel
+  set_progress(60)
   property_type_household
   property_type_food
   property_type_farm
+  set_progress(80)
   property_type_boat_standard
   property_type_logging
   property_type_tools
   property_type_life
   property_type_health
+  set_progress(100)
 ---
 comment: |
   This question is used to introduce your interview. Please customize
@@ -68,15 +73,36 @@ continue button field: DebtCollectionHelper_intro
 question: |
   Maine Debt Collection Hearing Helper
 subquestion: |
-  Use this interview to create a customized print-out or .pdf to help you navigate your Maine debt collection hearing or disclosure hearing, and organize important information about your debt collection exempt income and property. 
+  Use this interview to create a customized print-out or .pdf to help you navigate your Maine debt collection hearing or disclosure hearing, and organize important information about your income and property. 
   
   This interview should only be used for unsecured debts (like a credit card), not debts like a mortgage or car loan. 
+  
+  This is not legal advice. You should talk with a lawyer about your case if you can – but this tool can help you navigate the process if you are on your own.
+
+continue button label: Get started
 ---
-id: User_Info
-question: |
-  What is your full name?
+#id: User_Info
+#question: |
+#  What is your full name?
+#fields:
+#  - Full name: users[0].name
+#    required: False
+#    note: |
+#      This is optional! You only need to fill this out if it will help you, or if you plan on sharing this report with someone. 
+---
+id: your name
+sets:
+    - users[0].name.first
+    - users[0].name.last
+    - users[0].name.middle
+    - users[0].name.suffix
+question:  |
+  About You
 fields:
-  - Full name: users[0].name 
+  - What is your name?: users[0].name.first
+    required: False
+under: |
+  This is optional! You only need to fill this out if it will help you, or if you plan on sharing this report with someone. 
 ---
 id: Court type
 question: |
@@ -155,12 +181,14 @@ fields:
 ---
 id: exempt property home
 question: |
-  What kind of property do you have?
+  Do you own a home?
 fields:
   - I own a home: property_type_home
     datatype: yesnoradio
   - How much equity do you have in your home?: home_equity_amount
     datatype: currency
+    note: |
+      ‘Equity’ is the amount of the value of your property that is available to you, after accounting for existing liens or financing like a mortgage or loan you still owe on.
     show if: property_type_home
   - Minor dependents live with me: home_minor_dep
     datatype: yesno
@@ -214,7 +242,7 @@ fields:
 ---
 id: cash
 question: |
-  Do you have any cash or money in bank accounts?
+  Cash and Bank Accounts
 fields: 
   - Do you have any cash or money in bank accounts?: property_type_cash
     datatype: yesnoradio
@@ -295,7 +323,7 @@ fields:
     datatype: yesnoradio
     note: |
       Under Maine law one stove for cooking, all stoves and furnaces for heating, and a certain amount of the fuel needed to run them is exempt from collections. You can have up to ten (10) cord of wood, five (5) tons of coal, and one thousand (1000) gallons of petroleum products (like oil or propane) for cooking and heating. 
-  - Do you have more than one cook stove, or more than the exempt amounts of fuel listed above?: property_type_fuel_extra
+  - Do you have more than one cook stove, or more than the exempt amounts of fuel listed here?: property_type_fuel_extra
     datatype: yesnoradio
     show if: property_type_fuel
   - Describe your extra cook stove or extra fuel (ex. A spare cooking stove worth $700 or 5 cord extra firewood): extra_fuel_detail
@@ -335,7 +363,9 @@ fields:
 id: boat
 question: |
   Do you own any boats?
-fields: 
+subquestion: |
+  Check all that apply. If you don't own a boat, click 'Next' to continue.
+fields:
   - I own a commercial fishing boat, 46 feet in length or under: property_type_boat_standard 
     datatype: yesno
   - Describe your boat (size, make, use, etc.): boat_detail
@@ -405,10 +435,10 @@ fields:
 ---
 mandatory: True
 question: |
-  Here is your document.
+  All done! Save or print your report to take to court with you.
 attachment:
-  name: Your letter
-  filename: letter
+  name: Debt Collection Hearing Helper Report
+  filename: DebtReport
   docx template file: Debt_Hearing_Helper.docx
   skip undefined: True
   valid formats:
