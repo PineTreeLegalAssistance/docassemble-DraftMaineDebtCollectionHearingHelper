@@ -28,13 +28,6 @@ features:
 modules:
   - docassemble.base.core
 ---
-#mandatory: true
-#code: |
-  #Setting default currency values
-#  biWEI = 0
-#  WEI = 0
-#  MEI = 0
----
 mandatory: True
 comment: |
   Controls order and branching logic for questions specific to this form
