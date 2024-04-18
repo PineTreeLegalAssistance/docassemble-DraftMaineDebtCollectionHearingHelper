@@ -44,19 +44,19 @@ code: |
   property_type_vehicle
   property_type_cash
   set_progress(40)
-  property_type_clothes
-  property_type_jewelry
-  property_type_fuel
+  #property_type_clothes
+  #property_type_jewelry
+  #property_type_fuel
   set_progress(60)
-  property_type_household
-  property_type_food
-  property_type_farm
+  #property_type_household
+  #property_type_food
+  #property_type_farm
   set_progress(80)
-  property_type_boat_standard
-  property_type_logging
-  property_type_tools
-  property_type_life
-  property_type_health
+  #property_type_boat_standard
+  #property_type_logging
+  #property_type_tools
+  #property_type_life
+  #property_type_health
   set_progress(100)
 ---
 comment: |
@@ -243,174 +243,174 @@ fields:
     datatype: currency
     show if: property_type_cash
 ---
-id: tools of the trade
-question: |
-  Do you work in a trade that requires tools and equipment? 
-fields: 
-  - Do you work in a trade and have tools and equipment you need to do your job?: property_type_tools
-    datatype: yesnoradio
-  - How much equity do you have in the tools of your trade? (If you work in commercial fishing do not include your fishing boat here - but do include other tools needed for your work such as fishing gear or tools used to repair equipment): tools_equity_amount
-    datatype: currency
-    show if: property_type_tools
+#id: tools of the trade
+#question: |
+#  Do you work in a trade that requires tools and equipment? 
+#fields: 
+#  - Do you work in a trade and have tools and equipment you need to do your job?: property_type_tools
+#    datatype: yesnoradio
+#  - How much equity do you have in the tools of your trade? (If you work in commercial fishing do not include your fishing boat here - but do include other tools needed for your work such as fishing gear or tools used to repair equipment): tools_equity_amount
+#    datatype: currency
+#    show if: property_type_tools
 ---
-id: logging
-question: |
-  Are you a logger?
-fields:
-  - Do you work in commercial logging?: property_type_logging
-    datatype: yesnoradio
-    note: |
-      If you are a commercial logger, one of every type of professional logging implement reasonably necessary to harvest and haul wood commercially, including any personal property incidental to its maintenance and operation is exempt from collections. But additional equipment beyond one of every type is not exempt.
-  - Do you have additional logging equipment beyond one of each type reasonably needed for your operation?: property_type_logging_additional
-    datatype: yesnoradio
-    show if: property_type_logging
-  - What is the total value of all your additional logging equipment?: additional_logging_value
-    datatype: currency
-    show if: property_type_logging_additional     
+#id: logging
+#question: |
+#  Are you a logger?
+#fields:
+#  - Do you work in commercial logging?: property_type_logging
+#    datatype: yesnoradio
+#    note: |
+#      If you are a commercial logger, one of every type of professional logging implement reasonably necessary to harvest and haul wood commercially, including any personal property incidental to its maintenance and operation is exempt from collections. But additional equipment beyond one of every type is not exempt.
+#  - Do you have additional logging equipment beyond one of each type reasonably needed for your operation?: property_type_logging_additional
+#    datatype: yesnoradio
+#    show if: property_type_logging
+#  - What is the total value of all your additional logging equipment?: additional_logging_value
+#    datatype: currency
+#    show if: property_type_logging_additional     
 ---
-id: clothing
-question: |
-  Do you have any valuable clothing?
-fields: 
-  - Do you own any items of clothing worth over $500?: property_type_clothes
-    datatype: yesnoradio
-  - How many items of clothing do you have that are worth over $500?: clothes_number
-    datatype: number
-    show if: property_type_clothes
+#id: clothing
+#question: |
+#  Do you have any valuable clothing?
+#fields: 
+#  - Do you own any items of clothing worth over $500?: property_type_clothes
+#    datatype: yesnoradio
+#  - How many items of clothing do you have that are worth over $500?: clothes_number
+#    datatype: number
+#    show if: property_type_clothes
 ---
-id: jewelry
-question: |
-  Do you have any valuable jewelry?
-fields: 
-  - Do you own any jewelry?: property_type_jewelry
-    datatype: yesnoradio
-  - Do you own a wedding ring or engagement ring?: property_type_jewelry_wedding
-    datatype: yesnoradio
-    show if: property_type_jewelry
-  - What is the total combined value of your wedding ring and engagement ring?: wedding_jewelry_value
-    datatype: currency
-    show if: property_type_jewelry_wedding
-  - Do you own any jewelry other than a wedding or engagement ring?: property_type_jewelry_other
-    datatype: yesnoradio
-    show if: property_type_jewelry
-  - What is the total combined value of your jewelry?: other_jewelry_value
-    datatype: currency
-    note: Do not count the value of your wedding or engagement ring here - those are handled separately.
-    show if: property_type_jewelry_other
+#id: jewelry
+#question: |
+#  Do you have any valuable jewelry?
+#fields: 
+#  - Do you own any jewelry?: property_type_jewelry
+#    datatype: yesnoradio
+#  - Do you own a wedding ring or engagement ring?: property_type_jewelry_wedding
+#    datatype: yesnoradio
+#    show if: property_type_jewelry
+#  - What is the total combined value of your wedding ring and engagement ring?: wedding_jewelry_value
+#    datatype: currency
+#    show if: property_type_jewelry_wedding
+#  - Do you own any jewelry other than a wedding or engagement ring?: property_type_jewelry_other
+#    datatype: yesnoradio
+#    show if: property_type_jewelry
+#  - What is the total combined value of your jewelry?: other_jewelry_value
+#    datatype: currency
+#    note: Do not count the value of your wedding or engagement ring here - those are handled separately.
+#    show if: property_type_jewelry_other
 ---
-id: household
-question: |
-  Do you have any other valuable household goods, appliances, or furniture?
-fields: 
-  - Do you have any household goods, applinaces, or furniture worth over $500?: property_type_household
-    datatype: yesnoradio
-  - How many household goods, appliances, or items of furniture do you have with values over $500?: household_number
-    datatype: number
-    show if: property_type_household
+#id: household
+#question: |
+#  Do you have any other valuable household goods, appliances, or furniture?
+#fields: 
+#  - Do you have any household goods, applinaces, or furniture worth over $500?: property_type_household
+#    datatype: yesnoradio
+#  - How many household goods, appliances, or items of furniture do you have with values over $500?: household_number
+#    datatype: number
+#    show if: property_type_household
 ---
-id: stove and fuel
-question: |
-  Cooking and Heating information
-fields: 
-  - Do you have a stove for cooking, stoves or furnaces for heating, and the fuel needed to run them?: property_type_fuel
-    datatype: yesnoradio
-    note: |
-      Under Maine law one stove for cooking, all stoves and furnaces for heating, and a certain amount of the fuel needed to run them is exempt from collections. You can have up to ten (10) cord of wood, five (5) tons of coal, and one thousand (1000) gallons of petroleum products (like oil or propane) for cooking and heating. 
-  - Do you have more than one cook stove, or more than the exempt amounts of fuel listed here?: property_type_fuel_extra
-    datatype: yesnoradio
-    show if: property_type_fuel
-  - Describe your extra cook stove or extra fuel (ex. A spare cooking stove worth $700 or 5 cord extra firewood): extra_fuel_detail
-    input type: area
-    show if: property_type_fuel_extra
+#id: stove and fuel
+#question: |
+#  Cooking and Heating information
+#fields: 
+#  - Do you have a stove for cooking, stoves or furnaces for heating, and the fuel needed to run them?: property_type_fuel
+#    datatype: yesnoradio
+#    note: |
+#      Under Maine law one stove for cooking, all stoves and furnaces for heating, and a certain amount of the fuel needed to run them is exempt from collections. You can have up to ten (10) cord of wood, five (5) tons of coal, and one thousand (1000) gallons of petroleum products (like oil or propane) for cooking and heating. 
+#  - Do you have more than one cook stove, or more than the exempt amounts of fuel listed here?: property_type_fuel_extra
+#    datatype: yesnoradio
+#    show if: property_type_fuel
+#  - Describe your extra cook stove or extra fuel (ex. A spare cooking stove worth $700 or 5 cord extra firewood): extra_fuel_detail
+#    input type: area
+#    show if: property_type_fuel_extra
 ---
-id: food supply
-question: |
-  Food Supply information
-fields: 
-  - Do you have a supply of up to six months of food?: property_type_food
-    datatype: yesnoradio
-    note: |
-      Under Maine law up to a six month supply of food which may include animals, feed, seeds, fertilizers, materials as well as the tools and equipment needed to raise and harvest food for personal, household, or family use is exempt from collections. If you have more than a six month supply, or have any of these things for commercial use or farming, we will ask about that next.
-  - Do you have more than a six month supply of food and needed materials and tools to raise and harvest it?: property_type_food_extra
-    datatype: yesnoradio
-    show if: property_type_food
-  - Describe your extra food supply and materials (ex. Livestock feed for 12 months or Additional fertilizer): extra_food_detail
-    input type: area
-    show if: property_type_food_extra
+#id: food supply
+#question: |
+#  Food Supply information
+#fields: 
+#  - Do you have a supply of up to six months of food?: property_type_food
+#    datatype: yesnoradio
+#    note: |
+#      Under Maine law up to a six month supply of food which may include animals, feed, seeds, fertilizers, materials as well as the tools and equipment needed to raise and harvest food for personal, household, or family use is exempt from collections. If you have more than a six month supply, or have any of these things for commercial use or farming, we will ask about that next.
+#  - Do you have more than a six month supply of food and needed materials and tools to raise and harvest it?: property_type_food_extra
+#    datatype: yesnoradio
+#    show if: property_type_food
+#  - Describe your extra food supply and materials (ex. Livestock feed for 12 months or Additional fertilizer): extra_food_detail
+#    input type: area
+#    show if: property_type_food_extra
 ---
-id: farm
-question: |
-  Are you a farmer?
-fields:
-  - Are you a farmer with a commercial farming operation?: property_type_farm
-    datatype: yesnoradio
-    note: |
-      If you are a commercial farmer, one of every type of farm tool or implement you reasonably need for your operation is exempt from collections. But additional equipment beyond one of every type is not exempt.
-  - Do you have additional farm equipment beyond one of each type reasonably needed for your operation?: property_type_farm_additional
-    datatype: yesnoradio
-    show if: property_type_farm
-  - What is the total value of all your additional farm equipment?: additional_farm_value
-    datatype: currency
-    show if: property_type_farm_additional
+#id: farm
+#question: |
+#  Are you a farmer?
+#fields:
+#  - Are you a farmer with a commercial farming operation?: property_type_farm
+#    datatype: yesnoradio
+#    note: |
+#      If you are a commercial farmer, one of every type of farm tool or implement you reasonably need for your operation is exempt from collections. But additional equipment beyond one of every type is not exempt.
+#  - Do you have additional farm equipment beyond one of each type reasonably needed for your operation?: property_type_farm_additional
+#    datatype: yesnoradio
+#    show if: property_type_farm
+#  - What is the total value of all your additional farm equipment?: additional_farm_value
+#    datatype: currency
+#    show if: property_type_farm_additional
 ---
-id: boat
-question: |
-  Do you own any boats?
-subquestion: |
-  Check all that apply. If you don't own a boat, click 'Next' to continue.
-fields:
-  - Do you own any boats?: boat_owner
-    datatype: yesnoradio
-  - I own a commercial fishing boat, 46 feet in length or under: property_type_boat_standard 
-    datatype: yesno
-    show if: boat_owner
-  - Describe your boat (size, make, use, etc.): boat_detail
-    input type: area
-    show if: property_type_boat_standard
-  - How much equity do you have in this boat?: boat_value
-    datatype: currency
-    show if: property_type_boat_standard
-  - I own a commercial fishing boat, over 46 feet in length: property_type_boat_large
-    datatype: yesno
-    show if: boat_owner
-  - Describe your boat (size, make, use, etc.): large_boat_detail
-    input type: area
-    show if: property_type_boat_large
-  - How much equity do you have in this boat?: large_boat_value
-    datatype: currency
-    show if: property_type_boat_large
-  - I own a boat for personal or recreational use: property_type_boat_other
-    datatype: yesno
-    show if: boat_owner
-  - Describe your boat (size, make, use, etc.): other_boat_detail
-    input type: area
-    show if: property_type_boat_other
-  - How much equity do you have in this boat?: other_boat_value
-    datatype: currency
-    show if: property_type_boat_other
+#id: boat
+#question: |
+#  Do you own any boats?
+#subquestion: |
+#  Check all that apply. If you don't own a boat, click 'Next' to continue.
+#fields:
+#  - Do you own any boats?: boat_owner
+#    datatype: yesnoradio
+#  - I own a commercial fishing boat, 46 feet in length or under: property_type_boat_standard 
+#    datatype: yesno
+#    show if: boat_owner
+#  - Describe your boat (size, make, use, etc.): boat_detail
+#    input type: area
+#    show if: property_type_boat_standard
+#  - How much equity do you have in this boat?: boat_value
+#    datatype: currency
+#    show if: property_type_boat_standard
+#  - I own a commercial fishing boat, over 46 feet in length: property_type_boat_large
+#    datatype: yesno
+#    show if: boat_owner
+#  - Describe your boat (size, make, use, etc.): large_boat_detail
+#    input type: area
+#    show if: property_type_boat_large
+#  - How much equity do you have in this boat?: large_boat_value
+#    datatype: currency
+#    show if: property_type_boat_large
+#  - I own a boat for personal or recreational use: property_type_boat_other
+#    datatype: yesno
+#    show if: boat_owner
+#  - Describe your boat (size, make, use, etc.): other_boat_detail
+#    input type: area
+#    show if: property_type_boat_other
+#  - How much equity do you have in this boat?: other_boat_value
+#    datatype: currency
+#    show if: property_type_boat_other
 ---
-id: life insurance
-question: |
-  Life Insurance 
-fields:
-  - Do you have any life insurance policies?: property_type_life
-    datatype: yesnoradio
-  - Is your life insurance a credit life insurance (a type of life insurance that pays off the balance of a debt if you die before paying it off)?: property_type_life_credit
-    datatype: yesnoradio
-    show if: property_type_life
-  - What is the value of your credit life insurance?: life_credit_value
-    datatype: currency
-    show if: property_type_life_credit
-  - What is the value of any accrued dividend or interest under, or loan value of your life insurance policies?: life_value
-    datatype: currency
-    show if: property_type_life
+#id: life insurance
+#question: |
+#  Life Insurance 
+#fields:
+#  - Do you have any life insurance policies?: property_type_life
+#    datatype: yesnoradio
+#  - Is your life insurance a credit life insurance (a type of life insurance that pays off the balance of a debt if you die before paying it off)?: property_type_life_credit
+#    datatype: yesnoradio
+#    show if: property_type_life
+#  - What is the value of your credit life insurance?: life_credit_value
+#    datatype: currency
+#    show if: property_type_life_credit
+#  - What is the value of any accrued dividend or interest under, or loan value of your life insurance policies?: life_value
+#    datatype: currency
+#    show if: property_type_life
 ---
-id: health aid
-question: |
-  Prescribed Health Aids or Medical Equipment
-fields:
-  - Do you have any health aids or medical equipment prescribed by a professional?: property_type_health
-    datatype: yesnoradio
+#id: health aid
+#question: |
+#  Prescribed Health Aids or Medical Equipment
+#fields:
+#  - Do you have any health aids or medical equipment prescribed by a professional?: property_type_health
+#    datatype: yesnoradio
 ---
 #code: |
 #  if boat_choice == property_type_boat_standard:
