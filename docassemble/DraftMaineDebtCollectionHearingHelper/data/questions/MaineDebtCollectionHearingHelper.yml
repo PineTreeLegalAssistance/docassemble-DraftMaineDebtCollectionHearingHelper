@@ -47,6 +47,7 @@ code: |
   #property_type_clothes
   #property_type_jewelry
   #property_type_fuel
+  property_type_other
   set_progress(60)
   #property_type_household
   #property_type_food
@@ -68,7 +69,7 @@ question: |
 subquestion: |
   Use this interview to create a customized print-out or .pdf to help you navigate your Maine debt collection hearing or disclosure hearing, and organize important information about your income and property. 
   
-  This interview should only be used for unsecured debts (like a credit card), not debts like a mortgage or car loan. 
+  This interview should only be used for unsecured debts (like a credit card), not debts like a mortgage, car loan, or child support. 
   
   This is not legal advice. You should talk with a lawyer about your case if you can – but this tool can help you navigate the process if you are on your own.
 
@@ -230,6 +231,13 @@ question: |
 fields: 
   - I own a vehicle: property_type_vehicle
     datatype: yesnoradio
+  - Vehicle make (Ford, Kia, etc.): vehicle_make
+    show if: property_type_vehicle
+  - Vehicle model: vehicle_model
+    show if: property_type_vehicle
+  - Vehicle year: vehicle_year
+    datatype: number
+    show if: property_type_vehicle
   - How much equity do you have in this vehicle?: vehicle_equity_amount
     datatype: currency
     show if: property_type_vehicle
@@ -257,6 +265,20 @@ fields:
     datatype: currency
     show if: property_type_cash
 ###Note to Jack: ask how joint bank accounts are treated - same as equity property?###
+---
+id: other property
+question: |
+  Do you have any other valuable property? 
+subquestion: |
+  Common examples include firearms, ATVs or other recreational vehicles.
+fields:
+  - Do you have any other valuable property?: property_type_other
+    datatype: yesnoradio
+  - I also have...: other_property
+    input type: area 
+    show if: property_type_other
+    note: |
+      List each item and its value here. (Example: 2020 Artic Cat snowmobile, $9,500; antique firearm collection, $2,500)
 ---
 #id: tools of the trade
 #question: |
