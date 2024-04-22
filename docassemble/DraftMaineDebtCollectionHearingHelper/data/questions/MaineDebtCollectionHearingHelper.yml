@@ -36,29 +36,29 @@ code: |
   DebtCollectionHelper_intro
   users[0].name.first
   court_type
-  hearing_type
   set_progress(20)
+  hearing_type
   income_type_TANF
+  set_progress(40)
   property_type_home
   property_type_home_additional
+  set_progress(60)
   property_type_vehicle
   property_type_cash
-  set_progress(40)
+  set_progress(80)
   #property_type_clothes
   #property_type_jewelry
   #property_type_fuel
   property_type_other
-  set_progress(60)
+  set_progress(100)
   #property_type_household
   #property_type_food
   #property_type_farm
-  set_progress(80)
   #property_type_boat_standard
   #property_type_logging
   #property_type_tools
   #property_type_life
   #property_type_health
-  set_progress(100)
 ---
 comment: |
   This question is used to introduce your interview. Please customize
@@ -69,9 +69,9 @@ question: |
 subquestion: |
   Use this interview to create a customized print-out or .pdf to help you navigate your Maine debt collection hearing or disclosure hearing, and organize important information about your income and property. 
   
-  This interview should only be used for unsecured debts (like a credit card), not debts like a mortgage, car loan, or child support. 
+  This interview should only be used for unsecured debts like a credit card, not debts like a mortgage, car loan, or child support. 
   
-  This is not legal advice. You should talk with a lawyer about your case if you can – but this tool can help you navigate the process if you are on your own.
+  This is not legal advice. You should talk with a lawyer about your case if you can. This tool can help you navigate the process if you are on your own.
 
 continue button label: Get started
 ---
@@ -470,7 +470,7 @@ fields:
 ---
 mandatory: True
 question: |
-  All done! Save or print your report to take to court with you.
+  All done! Save or print your report to review and take to court with you.
 attachment:
   name: Debt Collection Hearing Helper Report
   filename: DebtReport

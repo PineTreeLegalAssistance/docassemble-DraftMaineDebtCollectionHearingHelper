@@ -1,1 +1,1 @@
-Early draft version of a debt collection hearing helper tool for self represented litigants in Maine. 
+Draft version of a debt collection hearing helper tool for self represented litigants in Maine. 
