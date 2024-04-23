@@ -130,7 +130,7 @@ fields:
     datatype: currency
     show if: income_type_wage
     note: |
-      Only report what you are making now (not an average, or what you have made in the past).
+      <ul><li>Use your gross income - what you are paid before deductions like taxes.</li> <li>Only report what you are making now (not an average, or what you have made in the past).</li></ul>
   - TANF: income_type_TANF
     datatype: yesno
   - How much do you get in TANF benefits each month?: TANF_amount
@@ -186,7 +186,7 @@ fields:
   - How much equity do you have in your home?: home_equity_amount
     datatype: currency
     note: |
-      ‘Equity’ is the amount of the value of your property that is available to you, after accounting for existing liens or financing like a mortgage or loan you still owe on.
+      ‘Equity’ is the value minus any liens or mortgages/loans against the property.
       
       If you own your home together with your spouse, only enter your half of the total equity amount.
     show if: property_type_home
@@ -221,7 +221,7 @@ fields:
     datatype: currecny
     show if: property_type_home_additional
     note: |
-      ‘Equity’ is the amount of the value of your property that is available to you, after accounting for existing liens or financing like a mortgage or loan you still owe on.
+      ‘Equity’ is the value minus any liens or mortgages/loans against the property.
       
       If you own your home or property together with your spouse, only enter your half of the total equity amount.
 ---
@@ -242,7 +242,7 @@ fields:
     datatype: currency
     show if: property_type_vehicle
     note: |
-      ‘Equity’ is the amount of the value of your property that is available to you, after accounting for existing liens or financing like a mortgage or loan you still owe on.
+      ‘Equity’ is the value minus any liens or mortgages/loans against the property.
       
       If you own your vehicle together with your spouse, only enter your half of the total equity amount.
   - Do you own any other vehicles?: property_type_vehicle_additional
@@ -278,7 +278,7 @@ fields:
     input type: area 
     show if: property_type_other
     note: |
-      List each item and its value here. (Example: 2020 Artic Cat snowmobile, $9,500; antique firearm collection, $2,500)
+      <ul><li>Only include items worth $500 or more in value minus any liens or loans against them.</li> <li>List each item and its value here. (Example: 2020 Artic Cat snowmobile, $9,500; antique firearm collection, $2,500).</li></ul>
 ---
 #id: tools of the trade
 #question: |
