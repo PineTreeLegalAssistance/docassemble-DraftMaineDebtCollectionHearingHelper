@@ -38,8 +38,6 @@ code: |
   court_type
   set_progress(20)
   hearing_type
-  if hearing_type == "Debt Collection Hearing":
-    CollectionProcessInfo
   income_type_TANF
   set_progress(40)
   property_type_home
@@ -120,19 +118,19 @@ fields:
       - Disclosure Hearing: Disclosure Hearing
       - Debt Collection Hearing: Debt Collection Hearing
 ---
-id: Debt Collection Info
-continue button field: CollectionProcessInfo
-question: |
-  About the Debt Collection Process in Maine
-fields:
-  - note: |
-      There are two stages to the debt collection process in Maine. 
-
-      <strong>Stage 1 - The Debt Collection Hearing</strong>: You are sued for the first time and the court will decide whether you owe the money. During this stage, you should make sure to tell the court all the reasons you don’t think you owe the money. At this stage, it’s possible that a creditor’s attorney would be willing to dismiss the case if you show them you can’t afford to pay the debt. To show them you can’t afford to pay the debt, you should show them that you have little income and property that they could force you to turn over. This tool will help you determine if you have any income or property you could be forced to turn over. 
-
-      <strong>Stage 2 - The Disclosure Hearing</strong>: If a judge says you owe the money and enters judgment, you have 30 days to pay. If you do not pay within 30 days, the creditor takes you to court for a second stage, called a “Disclosure.” At a Disclosure, the only issue is whether you have income and assets that you can be forced to turn over to pay the debt. There are very specific rules about what you should be forced to turnover. Sometimes a creditor’s lawyer or even a judge might try to make you turn over property that is protected, or “exempt”, by the law. This tool will help you determine if your income and property is protected, or exempt, by the law. 
-
-continue button label: Next
+#id: Debt Collection Info
+#continue button field: CollectionProcessInfo
+#question: |
+#  About the Debt Collection Process in Maine
+#fields:
+#  - note: |
+#      There are two stages to the debt collection process in Maine. 
+#
+#      <strong>Stage 1 - The Debt Collection Hearing</strong>: You are sued for the first time and the court will decide whether you owe the money. During this stage, you should make sure to tell the court all the reasons you don’t think you owe the money. At this stage, it’s possible that a creditor’s attorney would be willing to dismiss the case if you show them you can’t afford to pay the debt. To show them you can’t afford to pay the debt, you should show them that you have little income and property that they could force you to turn over. This tool will help you determine if you have any income or property you could be forced to turn over. 
+#
+#      <strong>Stage 2 - The Disclosure Hearing</strong>: If a judge says you owe the money and enters judgment, you have 30 days to pay. If you do not pay within 30 days, the creditor takes you to court for a second stage, called a “Disclosure.” At a Disclosure, the only issue is whether you have income and assets that you can be forced to turn over to pay the debt. There are very specific rules about what you should be forced to turnover. Sometimes a creditor’s lawyer or even a judge might try to make you turn over property that is protected, or “exempt”, by the law. This tool will help you determine if your income and property is protected, or exempt, by the law. 
+#
+#continue button label: Next
 ---
 id: exempt income sources
 question: |
@@ -286,7 +284,9 @@ id: other property
 question: |
   Do you have any other valuable property? 
 subquestion: |
-  Common examples include firearms, ATVs or other recreational vehicles.
+  Common examples include firearms, ATVs or other recreational vehicles. 
+  
+  Only include items worth $500 or more in value minus any liens or loans against them.
 fields:
   - Do you have any other valuable property?: property_type_other
     datatype: yesnoradio
@@ -294,7 +294,7 @@ fields:
     input type: area 
     show if: property_type_other
     note: |
-      <ul><li>Only include items worth $500 or more in value minus any liens or loans against them.</li> <li>List each item and its value here. (Example: 2020 Artic Cat snowmobile, $9,500; antique firearm collection, $2,500).</li></ul>
+      <ul><li>List each item and its value here. (Example: 2020 Artic Cat snowmobile, $9,500; antique firearm collection, $2,500).</li></ul>
 ---
 #id: tools of the trade
 #question: |
