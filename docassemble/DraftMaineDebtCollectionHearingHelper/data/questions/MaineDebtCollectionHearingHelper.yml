@@ -140,7 +140,7 @@ question: |
 subquestion: |
   Use this interview to create a customized print-out or .pdf to help you navigate your Maine debt collection hearing or disclosure hearing, and organize important information about your income and property. 
   
-  This interview should only be used for unsecured debts like a credit card, not debts like a mortgage, car loan, or child support. 
+  This interview should only be used for unsecured debts like a credit card or small loan from your bank or credit union, not debts like a mortgage, car loan, or child support. 
   
   This is not legal advice. You should talk with a lawyer about your case if you can. This tool can help you navigate the process if you are on your own.
   
@@ -221,7 +221,7 @@ id: exempt income sources
 question: |
   Which kinds of income do you have? 
 subquestion: |
-  Please check all that apply. Do <strong>not</strong> include any income from your spouse, only your own.
+  Please check all that apply. Do <strong>not</strong> include any income from your spouse, only your own. If you have no income, you can just skip this question.
 fields:
   - Wages or other income from work: income_type_wage
     datatype: yesno
