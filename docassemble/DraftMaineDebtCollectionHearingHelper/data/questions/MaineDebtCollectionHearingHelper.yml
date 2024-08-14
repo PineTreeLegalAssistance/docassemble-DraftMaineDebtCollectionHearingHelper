@@ -109,6 +109,8 @@ code: |
   court_type
   set_progress(20)
   hearing_type
+  if court_type == "Small Claims" and hearing_type == "Debt Collection Hearing":
+    small_claims_notice  
   income_type_TANF
   set_progress(40)
   property_type_home
@@ -192,6 +194,14 @@ fields:
     choices:
       - District Court: District
       - Small Claims Court: Small Claims
+---
+id: small claims note
+question: |
+  You said you are being sued for a debt in Maine Small Claims Court. 
+subquestion: |
+  If you are being sued in Small Claims court by a debt collector, or being sued for a credit card or student loan debt in Small Claims - the company suing you may be breaking Maine law. If this is your situation, Pine Tree Legal Assistance may be able to help. <a href="https://ptla.org/contact-us">Contact Pine Tree Legal</a>.
+  
+continue button field: small_claims_notice  
 ---
 id: hearing type
 question: |
