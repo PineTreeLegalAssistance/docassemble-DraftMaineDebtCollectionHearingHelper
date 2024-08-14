@@ -581,7 +581,9 @@ fields:
 ---
 mandatory: True
 question: |
-  All done! Save or print your report to review and take to court with you.
+  All done! 
+subquestion: |  
+  The report below has important information about debt collection in Maine, what you told us about your income and property, and next steps. Save or print your report to review and take to court with you.
 attachment:
   name: Debt Collection Hearing Helper Report
   filename: DebtReport
