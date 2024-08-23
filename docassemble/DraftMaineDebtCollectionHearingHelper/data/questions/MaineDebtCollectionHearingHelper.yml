@@ -218,7 +218,7 @@ fields:
 id: Debt Collection Info
 continue button field: District_DC
 question: |
-  About District Court Debt Collection Casesin Maine
+  About District Court Debt Collection Cases in Maine
 fields:
   - note: |
       
@@ -235,7 +235,14 @@ id: exempt income sources
 question: |
   Which kinds of income do you have? 
 subquestion: |
-  Please check all that apply. Do <strong>not</strong> include any income from your spouse, only your own. If you have no income, you can just skip this question.
+  Please check all that apply. 
+  
+  <ul>
+  <li>Do <strong>not</strong> include any income from your spouse, only your own.</li>
+  <li>Food supplement benefits/SNAP/food stamps <strong>do not count as income</strong> for these cases!</li>
+  <li>If you have no income, you can just skip this question.</li>
+  </ul>
+  <br />
 fields:
   - Wages or other income from work: income_type_wage
     datatype: yesno
