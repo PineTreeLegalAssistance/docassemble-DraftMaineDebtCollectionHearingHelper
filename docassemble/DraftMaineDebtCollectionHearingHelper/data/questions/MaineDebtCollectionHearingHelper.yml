@@ -111,6 +111,8 @@ code: |
   hearing_type
   if court_type == "Small Claims" and hearing_type == "Debt Collection Hearing":
     small_claims_notice  
+  if court_type == "District" and hearing_type == "Debt Collection Hearing":
+    District_DC
   income_type_TANF
   set_progress(40)
   property_type_home
@@ -213,19 +215,21 @@ fields:
       - Disclosure Hearing: Disclosure Hearing
       - Debt Collection Hearing: Debt Collection Hearing
 ---
-#id: Debt Collection Info
-#continue button field: CollectionProcessInfo
-#question: |
-#  About the Debt Collection Process in Maine
-#fields:
-#  - note: |
-#      There are two stages to the debt collection process in Maine. 
-#
-#      <strong>Stage 1 - The Debt Collection Hearing</strong>: You are sued for the first time and the court will decide whether you owe the money. During this stage, you should make sure to tell the court all the reasons you don’t think you owe the money. At this stage, it’s possible that a creditor’s attorney would be willing to dismiss the case if you show them you can’t afford to pay the debt. To show them you can’t afford to pay the debt, you should show them that you have little income and property that they could force you to turn over. This tool will help you determine if you have any income or property you could be forced to turn over. 
-#
-#      <strong>Stage 2 - The Disclosure Hearing</strong>: If a judge says you owe the money and enters judgment, you have 30 days to pay. If you do not pay within 30 days, the creditor takes you to court for a second stage, called a “Disclosure.” At a Disclosure, the only issue is whether you have income and assets that you can be forced to turn over to pay the debt. There are very specific rules about what you should be forced to turnover. Sometimes a creditor’s lawyer or even a judge might try to make you turn over property that is protected, or “exempt”, by the law. This tool will help you determine if your income and property is protected, or exempt, by the law. 
-#
-#continue button label: Next
+id: Debt Collection Info
+continue button field: District_DC
+question: |
+  About District Court Debt Collection Casesin Maine
+fields:
+  - note: |
+      
+      When you are sued in District Court, you must file a written answer within 20 days of the day the Complaint and Summons are delivered to you. <strong>If you do not file a written answer within 20 days, you will likely lose the case by default.</strong>  
+    
+      You should have gotten a simple form answer with the papers telling you that you are being sued for a debt. Follow the instructions on that form and return it to the court within 20 days to avoid losing your case by default. If you need another copy of that form, you can <a href="https://mjbportal.courts.maine.gov/CourtForms/FormsLists/DownloadForm?strFormNumber=BCCP-2021">find it on the Maine Judicial Branch website</a>.
+    
+      Try to get a lawyer’s advice if you are sued for a debt in District Court. This is very important if you believe that you don’t owe some or all of the money or have other legal defenses. If you haven't already, you can <a href="https://ptla.org/contact-us">contact Pine Tree</a> – we may be able to help in these cases.
+ 
+
+continue button label: Next
 ---
 id: exempt income sources
 question: |
