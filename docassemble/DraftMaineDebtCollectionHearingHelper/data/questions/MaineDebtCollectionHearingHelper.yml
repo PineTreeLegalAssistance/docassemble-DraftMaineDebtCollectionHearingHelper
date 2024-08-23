@@ -256,7 +256,7 @@ fields:
   - How much do you get in TANF benefits each month?: TANF_amount
     datatype: currency
     show if: income_type_TANF
-  - SSI/Social Security Benefits: income_type_SSI
+  - Social Security (including SSI, SSDI or disability, Social Security Retirement): income_type_SSI
     datatype: yesno
   - How much do you get in SSI and Social Security benefits each month?: SSI_amount
     datatype: currency
@@ -306,7 +306,7 @@ fields:
   - How much equity do you have in your home?: home_equity_amount
     datatype: currency
     note: |
-      ‘Equity’ is the value minus any liens or mortgages/loans against the property.
+      ‘Equity’ is the value minus any liens or mortgages/loans against the property. In other words, if you were to sell that house tomorrow and pay off any loans on it, how much would you make afterward, if anything?
       
       If you own your home together with your spouse, only enter your half of the total equity amount.
     show if: property_type_home
@@ -341,7 +341,7 @@ fields:
     datatype: currecny
     show if: property_type_home_additional
     note: |
-      ‘Equity’ is the value minus any liens or mortgages/loans against the property.
+      ‘Equity’ is the value minus any liens or mortgages/loans against the property. In other words, if you were to sell that property tomorrow and pay off any loans on it, how much would you make afterward, if anything?
       
       If you own your home or property together with your spouse, only enter your half of the total equity amount.
 ---
@@ -362,7 +362,7 @@ fields:
     datatype: currency
     show if: property_type_vehicle
     note: |
-      ‘Equity’ is the value minus any liens or mortgages/loans against the property.
+      ‘Equity’ is the value minus any liens or mortgages/loans against the property. In other words, if you were to sell that car tomorrow and pay off any loans on it, how much would you make afterward, if anything?
       
       If you own your vehicle together with your spouse, only enter your half of the total equity amount.
   - Do you own any other vehicles?: property_type_vehicle_additional
@@ -371,9 +371,11 @@ fields:
   - How many other vehicles do you own?: additional_vehicle_number
     datatype: number
     show if: property_type_vehicle_additional
-  - How much equity do you have in these other vehicles?: additional_vehicle_equity_amount
+  - How much total equity do you have in these other vehicles?: additional_vehicle_equity_amount
     datatype: currency
     show if: property_type_vehicle_additional
+    note: |
+      In other words, if you were to sell these vehicles tomorrow and pay off any loans on them, how much would you make afterward, if anything?
 ---
 id: cash
 question: |
