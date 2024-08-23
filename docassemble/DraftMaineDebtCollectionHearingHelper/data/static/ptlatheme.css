@@ -9,7 +9,6 @@
     background-color: #024442 !important;    
 } 
 
-
 .al-logo img {
     max-height: 40px;
 }
@@ -34,6 +33,14 @@
     position: absolute;
     white-space: nowrap;
     width: 1px;
+}
+
+
+.al_display_template.scrollable-panel, 
+.al_display_template.not-scrollable, 
+.al_display_template .scrollable-panel, 
+.al_display_template .not-scrollable {
+    margin-bottom: 1.0rem;
 }
 
 /* --------------------------------------------------------------------
@@ -74,10 +81,16 @@ body {
   background-color: #fff
 }
 
+/*ToS box and scrollbar*/
 [data-bs-theme=dark] .al_collapse_template .bg-light, [data-bs-theme=dark] .al_display_template .bg-light, [data-bs-theme=dark] .al_display_template.bg-light {
     --bs-bg-opacity: 1;
     background-color: #f8f9fa !important;
     border-color: #d3d4d5 !important;
+    scrollbar-color: #999999 #ededed; /* First color for thumb, second for track */
+}
+
+[data-bs-theme=dark] .form-select {
+    --bs-form-select-bg-img: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='#000' stroke='%23dee2e6' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e);
 }
 
 .text-start.btn.btn-light.dalabelauty {
@@ -306,10 +319,6 @@ body {
     border-color: #024442;
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgba(2, 68, 66,.25);
-
-/*====================================================================================================== 
-Progress Bar on mobile || 375 x 812 || Default, Portrait and Landscape 
-======================================================================================================== */
 }
 /*progress bar margin*/
 .mt-2 {
@@ -405,3 +414,4 @@ and (max-width: 812px) and (orientation: landscape) {
       margin-top: 2.0rem !important;
   }
 }
+  
