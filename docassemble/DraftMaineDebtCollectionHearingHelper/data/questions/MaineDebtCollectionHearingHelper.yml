@@ -238,7 +238,7 @@ subquestion: |
   Please check all that apply. 
   
   <ul>
-  <li>Do <strong>not</strong> include any income from your spouse, only your own.</li>
+  <li>Do <strong>not</strong> include any income from your spouse <strong>unless</strong> you were both sued in this case.</li>
   <li>Food supplement benefits/SNAP/food stamps <strong>do not count as income</strong> for these cases!</li>
   <li>If you have no income, you can just skip this question.</li>
   </ul>
@@ -308,7 +308,7 @@ fields:
     note: |
       ‘Equity’ is the value minus any liens or mortgages/loans against the property. In other words, if you were to sell that house tomorrow at market value and pay off any loans on it, how much would you make afterward, if anything?
       
-      If you own your home together with your spouse, only enter your half of the total equity amount.
+      If you own your home together with your spouse, only enter your half of the total equity amount <strong>unless</strong> you were both sued in this case.
     show if: property_type_home
   - Minor dependents live with me: home_minor_dep
     datatype: yesno
@@ -343,7 +343,7 @@ fields:
     note: |
       ‘Equity’ is the value minus any liens or mortgages/loans against the property. In other words, if you were to sell that property at market value tomorrow and pay off any loans on it, how much would you make afterward, if anything?
       
-      If you own your home or property together with your spouse, only enter your half of the total equity amount.
+      If you own your home or property together with your spouse, only enter your half of the total equity amount <strong>unless</strong> you were both sued in this case.
 ---
 id: vehicle
 question: | 
@@ -364,7 +364,7 @@ fields:
     note: |
       ‘Equity’ is the value minus any liens or loans against the vehicle. In other words, if you were to sell that car at market value tomorrow and pay off any loans on it, how much would you make afterward, if anything?
       
-      If you own your vehicle together with your spouse, only enter your half of the total equity amount.
+      If you own your vehicle together with your spouse, only enter your half of the total equity amount <strong>unless</strong> you were both sued in this case.
   - Do you own any other vehicles?: property_type_vehicle_additional
     datatype: yesnoradio
     show if: property_type_vehicle
