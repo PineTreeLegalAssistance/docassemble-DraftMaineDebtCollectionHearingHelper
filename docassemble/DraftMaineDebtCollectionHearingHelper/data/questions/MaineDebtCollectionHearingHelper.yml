@@ -394,7 +394,7 @@ question: |
 subquestion: |
   Common examples include firearms, ATVs or other recreational vehicles. 
   
-  Only include items worth $500 or more in value minus any liens or loans against them.
+  Only include items worth $600 or more in value minus any liens or loans against them.
 fields:
   - Do you have any other valuable property?: property_type_other
     datatype: yesnoradio
