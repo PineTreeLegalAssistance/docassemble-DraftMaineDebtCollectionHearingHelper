@@ -592,6 +592,7 @@ fields:
 #  else:
 #    part_exempt_wage_test_result = (TIW) * .75
 ---
+id: interview_complete
 mandatory: True
 question: |
   All done! 

@@ -46,7 +46,7 @@ def find_package_data(where='.', package='', exclude=standard_exclude, exclude_d
 setup(name='docassemble.DraftMaineDebtCollectionHearingHelper',
       version='0.0.2',
       description=('A draft of a tool to help self represented litigants in Maine deal with debt collection and disclosure hearings in Small Claims or District Court.'),
-      long_description='Draft version of a debt collection hearing helper tool for self represented litigants in Maine. ',
+      long_description='Debt Collection Hearing Helper tool for Maine',
       long_description_content_type='text/markdown',
       author='Jack Haycock',
       author_email='jhaycock@ptla.org',
